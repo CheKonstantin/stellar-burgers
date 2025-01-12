@@ -18,16 +18,27 @@ import {
 } from '@pages';
 import '../../index.css';
 import styles from './app.module.css';
+
+import { useEffect } from 'react';
 import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
 import ProtectedRoute from '../protected-route';
+import { useDispatch } from '../../services/store';
+import { getIngredientsList } from '../../slices/ingredientsSlice';
+import { getUser } from '../../slices/userSlice';
 
 const App = () => {
   const location = useLocation();
-  const bgLocation = location.state?.background;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const bgLocation = location.state?.background;
+
   const closeModal = () => {
     navigate(-1);
   };
+
+  useEffect(() => {
+    dispatch(getIngredientsList()), dispatch(getUser());
+  }, []);
 
   return (
     <div className={styles.app}>
