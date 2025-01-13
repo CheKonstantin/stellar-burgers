@@ -96,7 +96,6 @@ export const userSlice = createSlice({
           (state.isAuthenticated = true), (state.isAuthChecked = true);
         } else {
           state.user = null;
-          // state.isAuthenticated = false;
         }
         state.loading = false;
       })
@@ -199,7 +198,7 @@ export const userSlice = createSlice({
   }
 });
 
-export const userResucer = userSlice.reducer;
+export const userReducer = userSlice.reducer;
 export const {
   getUserSelect,
   getLoading,

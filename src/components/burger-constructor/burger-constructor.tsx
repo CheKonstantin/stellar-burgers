@@ -10,15 +10,18 @@ import {
 import {
   clearOrder,
   getOrderRequest,
+  newOrder,
   getOrderModalData
 } from '../../slices/orderSlice';
+import { isAuthenticatedSelect } from '../../slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
   const bun = useSelector(getBun);
   const ingredients = useSelector(getIngredients);
-  console.log('Ingredients:', ingredients);
+  const user = useSelector(isAuthenticatedSelect);
+  const navigate = useNavigate();
   const constructorItems = {
     bun: bun,
     ingredients: ingredients
@@ -30,6 +33,15 @@ export const BurgerConstructor: FC = () => {
 
   const onOrderClick = () => {
     if (!constructorItems.bun || orderRequest) return;
+    if (!user) {
+      navigate('/login');
+    } else {
+      const data = [
+        constructorItems.bun._id,
+        ...constructorItems.ingredients.map((i) => i._id)
+      ];
+      dispatch(newOrder(data));
+    }
   };
   const closeOrderModal = () => {
     dispatch(clearOrder()), dispatch(resetConstructor());

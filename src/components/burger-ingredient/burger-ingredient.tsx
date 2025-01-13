@@ -15,8 +15,6 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
       dispatch(addBunsandIngredients(ingredient));
     };
 
-    console.log('kk' + count);
-
     return (
       <BurgerIngredientUI
         ingredient={ingredient}

@@ -4,7 +4,7 @@ import { TOrder } from '@utils-types';
 import { FC } from 'react';
 import { getFeed, getFeedSelect } from '../../slices/feedSlice';
 import { useDispatch, useSelector } from '../../services/store';
-import {useEffect} from "react";
+import { useEffect } from 'react';
 
 export const Feed: FC = () => {
   const orders: TOrder[] = useSelector(getFeedSelect);
@@ -20,7 +20,6 @@ export const Feed: FC = () => {
   if (!orders.length) {
     return <Preloader />;
   }
-
 
   return <FeedUI orders={orders} handleGetFeeds={handleGetFeeds} />;
 };
