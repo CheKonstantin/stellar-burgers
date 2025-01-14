@@ -5,11 +5,11 @@ import { useSelector } from '../../services/store';
 import { getUserSelect, isAuthCheckedSelector } from '../../slices/userSlice';
 
 type TProtectedRouteType = {
-  isAuthenticated?: boolean;
+  isUserLoggedIn?: boolean;
   children: React.ReactElement;
 };
 
-const ProtectedRoute = ({ children, isAuthenticated }: TProtectedRouteType) => {
+const ProtectedRoute = ({ children, isUserLoggedIn }: TProtectedRouteType) => {
   const location = useLocation();
   const isAuthChecked = useSelector(isAuthCheckedSelector);
   const user = useSelector(getUserSelect);
@@ -17,16 +17,14 @@ const ProtectedRoute = ({ children, isAuthenticated }: TProtectedRouteType) => {
     return <Preloader />;
   }
 
-  if (!isAuthenticated && user) {
+  if (!isUserLoggedIn && !user) {
     return <Navigate to='/login' state={{ from: location }} />;
   }
 
-  if (isAuthenticated && user) {
+  if (isUserLoggedIn && user) {
     const { from } = location.state ?? { from: { pathname: '/' } };
     return <Navigate to={from} />;
   }
-
-  console.log('isAuthChecked:', isAuthenticated);
 
   return children;
 };
