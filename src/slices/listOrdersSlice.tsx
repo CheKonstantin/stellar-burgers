@@ -1,6 +1,6 @@
 import { TOrder } from '@utils-types';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getOrderByNumberApi, getOrdersApi } from '@api';
+import { getOrderByNumberApi, getOrdersApi } from '../utils/burger-api';
 import { getLoading } from './userSlice';
 
 type TAllOrders = {
