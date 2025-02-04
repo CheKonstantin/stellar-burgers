@@ -12,7 +12,7 @@ import {
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TUser } from '@utils-types';
 import { deleteCookie, setCookie } from '../utils/cookie';
-type TUserData = {
+export type TUserData = {
   user: TUser | null;
   loading: boolean;
   error: string | null;
@@ -20,7 +20,7 @@ type TUserData = {
   isAuthChecked: boolean;
 };
 
-const initialState: TUserData = {
+export const initialState: TUserData = {
   loading: false,
   error: null,
   isAuthenticated: false,

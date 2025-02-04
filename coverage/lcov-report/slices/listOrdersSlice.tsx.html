@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>54/63</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">77.77% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>7/9</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>54/63</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
@@ -125,8 +125,7 @@
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -163,25 +162,24 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -192,9 +190,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { TOrder } from '@utils-types';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getOrderByNumberApi, getOrdersApi } from '../utils/burger-api';
-import { getLoading } from './userSlice';
 &nbsp;
-type TAllOrders = {
+export type TAllOrders = {
   orders: TOrder[];
   orderByNumber: TOrder | null;
   error: string | null;
@@ -226,25 +223,25 @@ export const allOrdersSlice = createSlice({
   extraReducers: (builder) =&gt; {
     builder
       .addCase(getAllOrders.pending, (state) =&gt; {
-<span class="cstat-no" title="statement not covered" >        (state.loading = true), (state.error = null);</span>
+        (state.loading = true), (state.error = null);
       })
       .addCase(getOrderByNumber.pending, (state) =&gt; {
-<span class="cstat-no" title="statement not covered" >        (state.loading = true), (state.error = null);</span>
+        (state.loading = true), (state.error = null);
       })
       .addCase(getOrderByNumber.fulfilled, (state, action) =&gt; {
-<span class="cstat-no" title="statement not covered" >        (state.loading = false),</span>
-<span class="cstat-no" title="statement not covered" >          (state.orderByNumber = action.payload.orders[0]);</span>
+        (state.loading = false),
+          (state.orderByNumber = action.payload.orders[0]);
       })
       .addCase(getAllOrders.fulfilled, (state, action) =&gt; {
-<span class="cstat-no" title="statement not covered" >        (state.loading = false), (state.orders = action.payload);</span>
+        (state.loading = false), (state.orders = action.payload);
       })
       .addCase(getAllOrders.rejected, (state, action) =&gt; {
-<span class="cstat-no" title="statement not covered" >        (state.loading = false),</span>
-<span class="cstat-no" title="statement not covered" >          (state.error = action.error.message || 'Ошбика загрузки');</span>
+        (state.loading = false),
+          (state.error = action.error.message<span class="branch-0 cbranch-no" title="branch not covered" > || 'Ошбика загрузки');</span>
       })
       .addCase(getOrderByNumber.rejected, (state, action) =&gt; {
-<span class="cstat-no" title="statement not covered" >        (state.loading = false),</span>
-<span class="cstat-no" title="statement not covered" >          (state.error = action.error.message || 'Ошибка  получения заказа');</span>
+        (state.loading = false),
+          (state.error = action.error.message<span class="branch-0 cbranch-no" title="branch not covered" > || 'Ошибка  получения заказа');</span>
       });
   }
 });
@@ -259,7 +256,7 @@ export const allOrderReducer = allOrdersSlice.reducer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-02-03T14:12:26.454Z
+                at 2025-02-04T14:31:24.397Z
             </div>
         <script src="../prettify.js"></script>
         <script>
