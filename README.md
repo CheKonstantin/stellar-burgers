@@ -14,7 +14,7 @@
 <img src="https://github.com/user-attachments/assets/10553a6b-121e-405b-beb0-758f76ef1afc" height="auto" width="32%"/>
 <img src="https://github.com/user-attachments/assets/506ce202-13fe-4787-8be1-d7ccb2a998cf" height="auto" width="32%"/>
 
-##Ссылка
+## Ссылка
 [Посмотреть проект]( https://chekonstantin.github.io/stellar-burgers/)
 
 ### Развернуть сервер разработки
