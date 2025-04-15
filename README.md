@@ -21,11 +21,11 @@
 ```
 npm run start
 ```
-### Размернуть сервер продакшена
+### Развернуть сервер продакшена
 ```
 npm run build
 ```
-### Размернуть storybook
+### Развернуть storybook
 ```
 npm run storybook
 ```
