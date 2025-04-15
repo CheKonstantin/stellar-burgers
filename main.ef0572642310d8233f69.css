@@ -438,42 +438,42 @@ input:-webkit-autofill:active
   fill: var(--colors-button-inactive);
 }
 @font-face {
-  src: url(assets/b60380891bcf2eb241ca.woff2) format('woff2');
+  src: url(/stellar-burgers/assets/b60380891bcf2eb241ca.woff2) format('woff2');
   font-family: 'Jet Brains Mono';
   font-weight: normal;
   font-display: swap;
 }
 
 @font-face {
-  src: url(assets/f52bee61d00ce995b89f.woff) format('woff');
+  src: url(/stellar-burgers/assets/f52bee61d00ce995b89f.woff) format('woff');
   font-family: 'Jet Brains Mono';
   font-weight: normal;
   font-display: swap;
 }
 
 @font-face {
-  src: url(assets/c232d532ea5a5189a278.woff2) format('woff2');
+  src: url(/stellar-burgers/assets/c232d532ea5a5189a278.woff2) format('woff2');
   font-family: 'Jet Brains Mono';
   font-weight: bold;
   font-display: swap;
 }
 
 @font-face {
-  src: url(assets/3914674f1cb2335acf26.woff) format('woff');
+  src: url(/stellar-burgers/assets/3914674f1cb2335acf26.woff) format('woff');
   font-family: 'Jet Brains Mono';
   font-weight: bold;
   font-display: swap;
 }
 
 @font-face {
-  src: url(assets/4ae67a017a5ff82bbbb7.woff2) format('woff2');
+  src: url(/stellar-burgers/assets/4ae67a017a5ff82bbbb7.woff2) format('woff2');
   font-family: 'Iceland';
   font-weight: normal;
   font-display: swap;
 }
 
 @font-face {
-  src: url(assets/77ad7fc2baffd9305538.woff) format('woff');
+  src: url(/stellar-burgers/assets/77ad7fc2baffd9305538.woff) format('woff');
   font-family: 'Iceland';
   font-weight: normal;
   font-display: swap;
