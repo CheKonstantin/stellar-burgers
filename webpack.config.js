@@ -15,8 +15,7 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     filename: isProd ? 'bundle.[contenthash].js' : 'bundle.js',
     assetModuleFilename: 'assets/[hash][ext][query]',
-    publicPath:
-      process.env.NODE_ENV === 'production' ? '/stellar-burgers/' : '/',
+    publicPath: '/stellar-burgers/',
     clean: true
   },
 
