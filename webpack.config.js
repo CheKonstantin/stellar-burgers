@@ -2,9 +2,22 @@ const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
+  mode: isProd ? 'production' : 'development',
+
   entry: path.resolve(__dirname, './src/index.tsx'),
+
+  output: {
+    path: path.resolve(__dirname, './dist'),
+    filename: isProd ? 'bundle.[contenthash].js' : 'bundle.js',
+    assetModuleFilename: 'assets/[hash][ext][query]',
+    clean: true
+  },
+
   module: {
     rules: [
       {
@@ -13,22 +26,23 @@ module.exports = {
         use: ['babel-loader']
       },
       {
-        test: /\.(ts)x?$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'ts-loader'
-        }
+        use: ['ts-loader']
       },
       {
         test: /\.css$/,
         exclude: /\.module\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: [
+          isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader'
+        ]
       },
       {
         test: /\.module\.css$/i,
         exclude: /node_modules/,
         use: [
-          'style-loader',
+          isProd ? MiniCssExtractPlugin.loader : 'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -38,38 +52,36 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpg|jpeg|png|svg)$/,
-        type: 'asset/resource'
-      },
-      {
-        test: /\.(woff|woff2)$/,
+        test: /\.(jpg|jpeg|png|svg|woff|woff2)$/,
         type: 'asset/resource'
       }
     ]
   },
+
   plugins: [
     new ESLintPlugin({
       extensions: ['.js', '.jsx', '.ts', '.tsx']
     }),
     new HtmlWebpackPlugin({
-      template: './public/index.html'
+      template: './public/index.html',
+      minify: isProd && {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true
+      }
     }),
-    new Dotenv()
+    new Dotenv(),
+    ...(isProd
+      ? [
+          new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css'
+          })
+        ]
+      : [])
   ],
+
   resolve: {
-    extensions: [
-      '*',
-      '.js',
-      '.jsx',
-      '.ts',
-      '.tsx',
-      '.json',
-      '.css',
-      '.scss',
-      '.png',
-      '.svg',
-      '.jpg'
-    ],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
       '@pages': path.resolve(__dirname, './src/pages'),
       '@components': path.resolve(__dirname, './src/components'),
@@ -81,14 +93,19 @@ module.exports = {
       '@selectors': path.resolve(__dirname, './src/services/selectors')
     }
   },
-  output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js'
-  },
+
   devServer: {
     static: path.join(__dirname, './dist'),
     compress: true,
     historyApiFallback: true,
-    port: 3002
-  }
+    port: 3002,
+    open: true
+  },
+
+  optimization: isProd
+    ? {
+        splitChunks: { chunks: 'all' },
+        runtimeChunk: 'single'
+      }
+    : {}
 };

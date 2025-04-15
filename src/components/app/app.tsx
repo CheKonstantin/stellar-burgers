@@ -1,10 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-  useNavigate
-} from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import {
   ConstructorPage,
   Feed,

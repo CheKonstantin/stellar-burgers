@@ -1,15 +1,23 @@
 {
   "parser": "@typescript-eslint/parser",
   "plugins": ["react", "@typescript-eslint", "prettier"],
-  "extends": ["prettier"],
+  "extends": ["prettier",   "eslint:recommended",
+  "plugin:@typescript-eslint/recommended",
+  "plugin:react/recommended"],
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2022,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     }
   },
   "rules": {
+    "react/prop-types": "off",
+    "react/display-name": "off",
+    "react/no-children-prop": "off",
+    "prefer-const": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/ban-types": "off",
     "prettier/prettier": [
       "warn",
       {
